@@ -41,6 +41,10 @@ const promptUser = () => {
 }
 
 promptUser()
+    .then((data) => {
+        axios.get(`https://api.github.com/users/${data.name}`)
+            .then((res) => {console.log(res.data)})
+    })
 
 
   
@@ -189,5 +193,9 @@ promptUser()
               zoom: .75; 
             } 
            }
-        </style>`
+        </style>
+        <body>
+        
+        </body>
+        `
           }
