@@ -68,8 +68,12 @@
          border-radius: 6px;
          }
          .photo-header img {
-         width: 250px;
-         height: 250px;
+        margin-left:auto;
+        margin-right: auto;
+        display:block;
+         justify-content: center;
+         width: 150px;
+         height: 150px;
          border-radius: 50%;
          object-fit: cover;
          margin-top: -75px;
@@ -138,16 +142,19 @@
     
 </head>
 <body>
-    <div class="container">
 
+    <main class="container wrapper">
             <% if (student.length > 0) { %>
                 <% student.forEach(student => {%>
                   <div class="photo-header">
+                    
+                      <img  src= "<%= student.avatar %>"  alt="github user profile pic" >
+
                     <h1>My name is <%= student.name %></h1>
                   </div>
           <%  });%>
           <% }%>
-        </div>
+        </main>
     </div>  
 </body>
 </html>

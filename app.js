@@ -8,12 +8,12 @@ const axios = require("axios")
 
 let student = [
     {
-    userName: "N/A",
-    avatar: "N/A" ,
-    repos: "N/A", 
-    followers: "N/A",
-    following: "N/A",
-    stars: "N/A"
+    userName: "",
+    avatar: "" ,
+    repos: "", 
+    followers: "",
+    following: "",
+    stars: ""
     }
  ];
 
@@ -36,8 +36,18 @@ const promptUser = () => {
 promptUser()
     .then( (data) => {
         axios.get(`https://api.github.com/users/${data.name}`)
-            .then((data) => {console.log(data)})
+            .then((res) => {
+
+                student[0].name = res.data.login
+                student[0].avatar = res.data.avatar_url
+                console.log(res.data.login)
+                console.log(student)
+                createPDF()
+            })
+
      })
+
+    
 
 
 
@@ -46,19 +56,18 @@ const createPDF = () => {
         if (err) {
             console.log(err)
         } else {
-            let options = {
-                "height": "11.25in",
-                "width": "8.5in",
-                "header": {
-                    "height": "5mm"
-                },
-                "footer": {
-                    "height": "5mm",
-                },
-            };
-            pdf.create(data, options).toFile("report.pdf");
+            // let options = {
+            //     "height": "11.25in",
+            //     "width": "8.5in",
+            //     "header": {
+            //         "height": "5mm"
+            //     },
+            //     "footer": {
+            //         "height": "5mm",
+            //     },
+            // };
+            pdf.create(data).toFile("report.pdf");
         }
     });
 }
 
-app.listen(3000);
