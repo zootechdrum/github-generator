@@ -37,11 +37,10 @@ promptUser()
     .then( (data) => {
         axios.get(`https://api.github.com/users/${data.name}`)
             .then((res) => {
-
+                console.log(res)
                 student[0].name = res.data.login
                 student[0].avatar = res.data.avatar_url
-                console.log(res.data.login)
-                console.log(student)
+                student[0].repos = res.data.public_repos
                 createPDF()
             })
 

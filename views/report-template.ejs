@@ -31,7 +31,6 @@
          main {
          background-color: #E9EDEE;
          height: auto;
-         padding-top: 30px;
          }
          h1, h2, h3, h4, h5, h6 {
          font-family: 'BioRhyme', serif;
@@ -67,16 +66,16 @@
          width: 95%;
          border-radius: 6px;
          }
-         .photo-header img {
-        margin-left:auto;
-        margin-right: auto;
-        display:block;
+        .photo-header img {
+          display: block;
+          margin-left:auto;
+          margin-right: auto;
          justify-content: center;
          width: 150px;
          height: 150px;
          border-radius: 50%;
          object-fit: cover;
-         margin-top: -75px;
+         /* margin-top: -65px; */
          box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
          }
          .photo-header h1, .photo-header h2 {
@@ -120,6 +119,7 @@
            padding: 20px;
            border-radius: 6px;
            margin: 20px;
+           background-color: pink;
          }
          
          .col {
@@ -143,15 +143,23 @@
 </head>
 <body>
 
-    <main class="container wrapper">
+    <main class="container">
             <% if (student.length > 0) { %>
                 <% student.forEach(student => {%>
-                  <div class="photo-header">
+                  <header class="photo-header">
                     
                       <img  src= "<%= student.avatar %>"  alt="github user profile pic" >
 
-                    <h1>My name is <%= student.name %></h1>
-                  </div>
+                    <h1>My GitHub username is <%= student.name %></h1>
+                  </header>
+                  <section>
+                    <div class="row">
+                        <div class="card">
+                          <p>Repo</p>
+                          <p><%= student.repos %></p>
+                        </div>
+                    </div>
+                  </section>
           <%  });%>
           <% }%>
         </main>
