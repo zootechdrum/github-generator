@@ -831,8 +831,7 @@
 <body>
 
     <main class="container">
-            <% if (student.length > 0) { %>
-                <% student.forEach(student => {%>
+            <% if (student) { %>
                   <header class="photo-header">
                     
                     <img  src= "<%= student.avatar %>"  alt="github user profile pic" >
@@ -862,7 +861,6 @@
                         </div>
                       </div>
                   </section>
-          <%  });%>
           <% }%>
         </main>
     </div>  

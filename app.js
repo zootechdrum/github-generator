@@ -6,15 +6,14 @@ const pdf = require("html-pdf");
 const inquirer = require("inquirer");
 const axios = require("axios")
 
-let student = [
+let student = 
     {
     userName: "",
     avatar: "" ,
     repos: "", 
     followers: "",
     following: "",
-    }
- ];
+    };
 
 const promptUser = () => {
     return inquirer.prompt([
@@ -32,11 +31,11 @@ promptUser()
         axios.get(`https://api.github.com/users/${data.name}`)
             .then((res) => {
                 console.log(res)
-                student[0].name = res.data.login
-                student[0].avatar = res.data.avatar_url
-                student[0].repos = res.data.public_repos
-                student[0].followers = res.data.followers
-                student[0].following = res.data.following
+                student.name = res.data.login
+                student.avatar = res.data.avatar_url
+                student.repos = res.data.public_repos
+                student.followers = res.data.followers
+                student.following = res.data.following
                 createPDF()
             })
 
@@ -53,13 +52,7 @@ const createPDF = () => {
         } else {
             let options = {
                 "height": "5.25in",
-                "width": "8.5in",
-                "header": {
-                    "height": "5mm"
-                },
-                "footer": {
-                    "height": "5mm",
-                },
+                "width": "8.5in"
             };
         
             pdf.create(data, options).toFile("report.pdf");
