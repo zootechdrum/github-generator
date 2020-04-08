@@ -13,7 +13,6 @@ let student = [
     repos: "", 
     followers: "",
     following: "",
-    stars: ""
     }
  ];
 
@@ -22,13 +21,8 @@ const promptUser = () => {
         {
             type:'input',
             name: "name",
-            message: "What is your name"
+            message: "What is your GitHub  UserName"
         },
-        {
-            type: 'input',
-            name: 'color',
-            message: 'What color would you like the color of cards to be ?'
-        }
     ])
 
 }
@@ -41,6 +35,8 @@ promptUser()
                 student[0].name = res.data.login
                 student[0].avatar = res.data.avatar_url
                 student[0].repos = res.data.public_repos
+                student[0].followers = res.data.followers
+                student[0].following = res.data.following
                 createPDF()
             })
 
@@ -55,18 +51,23 @@ const createPDF = () => {
         if (err) {
             console.log(err)
         } else {
-            // let options = {
-            //     "height": "11.25in",
-            //     "width": "8.5in",
-            //     "header": {
-            //         "height": "5mm"
-            //     },
-            //     "footer": {
-            //         "height": "5mm",
-            //     },
-            // };
-            pdf.create(data).toFile("report.pdf");
+            let options = {
+                "height": "5.25in",
+                "width": "8.5in",
+                "header": {
+                    "height": "5mm"
+                },
+                "footer": {
+                    "height": "5mm",
+                },
+            };
+        
+            pdf.create(data, options).toFile("report.pdf");
         }
     });
 }
+
+
+
+
 
