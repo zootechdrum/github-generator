@@ -7,7 +7,6 @@ const inquirer = require("inquirer");
 const axios = require("axios")
 
 
-
 let student = 
     {
     userName: "",
@@ -48,7 +47,6 @@ promptUser()
 
 
 const createPDF = () => {
-    app.use(express.static((__dirname, 'public')));
     ejs.renderFile(path.join(__dirname, './views/', "index.ejs"), {student: student}, (err, data) => {
         if (err) {
             console.log(err)
