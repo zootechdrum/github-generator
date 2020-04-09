@@ -6,6 +6,8 @@ const pdf = require("html-pdf");
 const inquirer = require("inquirer");
 const axios = require("axios")
 
+
+
 let student = 
     {
     userName: "",
@@ -46,12 +48,13 @@ promptUser()
 
 
 const createPDF = () => {
-    ejs.renderFile(path.join(__dirname, './views/', "report-template.ejs"), {student: student}, (err, data) => {
+    app.use(express.static((__dirname, 'public')));
+    ejs.renderFile(path.join(__dirname, './views/', "index.ejs"), {student: student}, (err, data) => {
         if (err) {
             console.log(err)
         } else {
             let options = {
-                "height": "5.25in",
+                "height": "8.70in",
                 "width": "8.5in"
             };
         

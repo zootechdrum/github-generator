@@ -1,0 +1,39 @@
+<%- include('partials/header'); -%>
+
+<body>
+
+	<main class="container">
+		<% if (student) { %>
+		<header class="photo-header">
+
+			<img src="<%= student.avatar %>" alt="github user profile pic">
+
+			<h1>My GitHub username is <%= student.name %></h1>
+		</header>
+
+		<section>
+			<div class="row">
+				<div class="col span-1-of-3">
+					<div class="card">
+						<h3>Public Repo</h3>
+						<p><%= student.repos %></p>
+					</div>
+				</div>
+				<div class="col span-1-of-3">
+					<div class="card">
+						<h3>Followers</h3>
+						<p><%= student.followers %></p>
+					</div>
+				</div>
+				<div class="col span-1-of-3">
+					<div class="card">
+						<h3>Following</h3>
+						<p><%= student.following %></p>
+					</div>
+				</div>
+			</div>
+		</section>
+		<% }%>
+	</main>
+	</div>
+</body>
