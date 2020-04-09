@@ -31,13 +31,14 @@ promptUser()
     .then( (data) => {
         axios.get(`https://api.github.com/users/${data.name}`)
             .then((res) => {
-                console.log(res)
                 student.name = res.data.login
                 student.avatar = res.data.avatar_url
                 student.repos = res.data.public_repos
                 student.followers = res.data.followers
                 student.following = res.data.following
                 createPDF()
+            },(error) => {
+                console.log("Something went wrong!")
             })
 
      })
